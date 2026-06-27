@@ -1,0 +1,56 @@
+/* MONEE — global styles: base typography, animations, scrollbars, reduced-motion.
+   Per-element colours are set inline by the app (palette swap for light/dark);
+   this file holds only the static, theme-agnostic rules. */
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{-webkit-tap-highlight-color: transparent;}
+body{margin:0;background:#ECEAE1;background-image:radial-gradient(135% 95% at 50% -25%, #F5F2E9 0%, #ECEAE1 58%);background-attachment:fixed;}
+#root{min-height:100%}
+.sb-root{font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+.mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-variant-numeric: tabular-nums;}
+input,select,button,textarea{font:inherit; color:inherit;}
+button{cursor:pointer; -webkit-tap-highlight-color: transparent;}
+svg, svg *{-webkit-tap-highlight-color: transparent; outline:none;}
+.noselect, .noselect *{-webkit-user-select:none; user-select:none;}
+:focus-visible{outline:2px solid #2F6F5E; outline-offset:2px; border-radius:6px;}
+.moneybox:focus-within{outline:2px solid #2F6F5E; outline-offset:2px;}
+::selection{background:#DCE8E2;}
+.ledger{background-image: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(180,170,150,0.14) 35px 36px);}
+:root{ --mn-ease: cubic-bezier(.34,1.12,.4,1); --mn-ease2: cubic-bezier(.4,0,.2,1); }
+html{scroll-behavior:smooth;}
+button{transition: transform .12s var(--mn-ease2), opacity .15s ease, background .18s ease, color .2s ease, box-shadow .2s ease;}
+button:active:not(:disabled){transform: scale(.97);}
+input,select,textarea{transition: border-color .15s ease, box-shadow .15s ease;}
+@keyframes mn-rise{from{opacity:0; transform: translateY(11px);} to{opacity:1; transform:none;}}
+@keyframes mn-fade{from{opacity:0;} to{opacity:1;}}
+@keyframes mn-pop{0%{opacity:0; transform: scale(.92);} 60%{opacity:1; transform: scale(1.025);} 100%{transform: scale(1);}}
+@keyframes mn-cardpop{0%{transform:scale(1); box-shadow:0 0 0 0 rgba(47,111,94,0);}28%{transform:scale(1.035); box-shadow:0 0 0 3px rgba(47,111,94,.30);}60%{transform:scale(.994);}100%{transform:scale(1); box-shadow:0 0 0 0 rgba(47,111,94,0);}}
+@keyframes mn-draw{to{stroke-dashoffset:0;}}
+@keyframes mn-shimmer{0%{transform: translateX(-130%);} 100%{transform: translateX(240%);}}
+.mn-panel{animation: mn-rise .36s var(--mn-ease2) both;}
+.mn-rise{animation: mn-rise .5s var(--mn-ease) both;}
+.mn-pop{animation: mn-pop .42s var(--mn-ease) both;}
+.mn-draw{stroke-dasharray:1; stroke-dashoffset:1; animation: mn-draw 1.05s var(--mn-ease2) .05s both;}
+.mn-tap{transition: transform .12s var(--mn-ease2);}
+.mn-tap:active{transform: scale(.96);}
+.mn-gloss{position:relative; overflow:hidden;}
+.mn-gloss::after{content:""; position:absolute; top:0; bottom:0; left:0; width:40%; background:linear-gradient(100deg, transparent, rgba(255,255,255,.6), transparent); transform: translateX(-130%); animation: mn-shimmer 1.6s ease .3s 1;}
+@keyframes mn-sheet{from{transform:translateY(102%);} to{transform:translateY(0);}}
+@keyframes mn-scrim{from{opacity:0;} to{opacity:1;}}
+.mn-sheet{animation: mn-sheet .36s var(--mn-ease2) both;}
+.mn-scrim{animation: mn-scrim .26s ease both;}
+.mn-row{transition: background .15s ease; cursor:pointer;}
+.mn-row:hover{background: rgba(47,111,94,0.045);}
+.mn-row:active{background: rgba(47,111,94,0.09);}
+.mn-rowd:hover{background: rgba(181,86,63,0.06);}
+.mn-rowd:active{background: rgba(181,86,63,0.11);}
+@keyframes mn-pulse{0%{box-shadow:0 0 0 0 rgba(47,111,94,0.5);}70%{box-shadow:0 0 0 13px rgba(47,111,94,0);}100%{box-shadow:0 0 0 0 rgba(47,111,94,0);}}
+.mn-pulse{animation: mn-pulse 1.9s var(--mn-ease2) infinite;}
+::-webkit-scrollbar{width:11px; height:11px;}
+::-webkit-scrollbar-thumb{background:var(--mn-sb,#cfc8b8); border-radius:9px; border:3px solid transparent; background-clip: padding-box;}
+::-webkit-scrollbar-thumb:hover{background:var(--mn-sbh,#bcb4a2);}
+::-webkit-scrollbar-track{background:transparent;}
+.mn-sheet, .mn-scrolly{scrollbar-width:none; -ms-overflow-style:none;}
+.mn-sheet::-webkit-scrollbar, .mn-scrolly::-webkit-scrollbar{width:0; height:0; display:none;}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; animation:none !important;}}
