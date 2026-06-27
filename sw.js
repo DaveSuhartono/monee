@@ -1,5 +1,5 @@
 /* MONEE service worker — offline app shell */
-const CACHE = "monee-v22";
+const CACHE = "monee-v23";
 const ASSETS = [
   "./",
   "./index.html",
