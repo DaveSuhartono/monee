@@ -31,6 +31,7 @@ input,select,textarea{transition: border-color .15s ease, box-shadow .15s ease;}
 .mn-panel{animation: mn-rise .36s var(--mn-ease2) both;}
 .mn-rise{animation: mn-rise .5s var(--mn-ease) both;}
 .mn-pop{animation: mn-pop .42s var(--mn-ease) both;}
+.mn-fade{animation: mn-fade .22s ease both;}
 .mn-draw{stroke-dasharray:1; stroke-dashoffset:1; animation: mn-draw 1.05s var(--mn-ease2) .05s both;}
 .mn-tap{transition: transform .12s var(--mn-ease2);}
 .mn-tap:active{transform: scale(.96);}
